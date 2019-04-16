@@ -3,7 +3,7 @@ import { AuthClass } from 'aws-amplify';
 import { AmplifyService } from 'aws-amplify-angular';
 import { from } from 'rxjs';
 
-import { ConfirmSignUpPayload, SignUpPayload } from '../models/authentication';
+import { ConfirmSignUpPayload, ForgotPasswordSubmitPayload, SignUpPayload } from '../models/authentication';
 import { CognitoConfig } from '../models/config';
 
 @Injectable({
@@ -40,5 +40,17 @@ export class AuthenticationService {
 
     confirmSignUp({ username, code }: ConfirmSignUpPayload) {
         return from(this.auth.confirmSignUp(username, code));
+    }
+
+    forgotPassword(username: string) {
+        return from(this.auth.forgotPassword(username));
+    }
+
+    forgotPasswordSubmit({
+        username,
+        code,
+        password
+    }: ForgotPasswordSubmitPayload) {
+        return from(this.auth.forgotPasswordSubmit(username, code, password));
     }
 }

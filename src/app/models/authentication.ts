@@ -13,3 +13,9 @@ export interface ConfirmSignUpPayload {
     username: string;
     code: string;
 }
+
+export interface ForgotPasswordSubmitPayload {
+    username: string;
+    password: string;
+    code: string;
+}

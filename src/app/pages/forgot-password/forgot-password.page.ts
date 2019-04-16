@@ -2,16 +2,15 @@ import { ChangeDetectionStrategy, Component } from '@angular/core';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 
-import { SignUpPayload } from '../../models/authentication';
 import { AuthenticationService } from '../../services/authentication.service';
-import { SignUpStore } from './sign-up.store';
+import { ForgotPasswordStore } from './forgot-password.store';
 
 @Component({
-    selector: "sign-up",
-    templateUrl: "./sign-up.page.html",
+    selector: "forgot-password",
+    templateUrl: "./forgot-password.page.html",
     changeDetection: ChangeDetectionStrategy.OnPush
 })
-export class SignUpPage {
+export class ForgotPasswordPage {
     formState$ = this.store.formState$;
 
     isSubmitting$ = this.store.isSubmitting$;
@@ -20,19 +19,17 @@ export class SignUpPage {
 
     constructor(
         private authenticationService: AuthenticationService,
-        private store: SignUpStore
+        private store: ForgotPasswordStore
     ) {}
 
-    onSubmit(payload: SignUpPayload) {
+    onSubmit(payload: string) {
         this.store.setSubmitting(true);
         this.authenticationService
-            .signUp(payload)
+            .forgotPassword(payload)
             .pipe(catchError(error => of(error)))
-            .subscribe(response =>
-                this.store.setValue({
-                    submitting: false,
-                    response
-                })
-            );
+            .subscribe(response => {
+                this.store.setResponse(response);
+                this.store.setSubmitting(false);
+            });
     }
 }
