@@ -1,13 +1,13 @@
-import { Component } from '@angular/core';
+import { ChangeDetectionStrategy, Component } from '@angular/core';
 
 import { CognitoConfig } from '../../models/config';
-import { AuthenticationService } from '../../services/authentication.service';
 import { ConfigStore } from './config.store';
 import { LayoutStore } from './layout.store';
 
 @Component({
     selector: "cognito-layout",
-    templateUrl: "./cognito.layout.html"
+    templateUrl: "./cognito.layout.html",
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class CognitoLayout {
     config$ = this.configStore.config$;
@@ -15,8 +15,7 @@ export class CognitoLayout {
 
     constructor(
         private layoutStore: LayoutStore,
-        private configStore: ConfigStore,
-        private authenticationService: AuthenticationService
+        private configStore: ConfigStore
     ) {}
 
     onToggle() {

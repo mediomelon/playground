@@ -11,13 +11,14 @@ body {
     padding: 0;
 }
 
-.app-container > *:not(router-outlet) {
+.app-container > *:not(router-outlet),
+.main-container > *:not(router-outlet) {
     display: flex;
     flex-direction: column;
     flex: 1 0 auto;
 }
 
-.main-content,
+.main-container,
 .drawer-container {
     padding: 24px;
 }
@@ -37,4 +38,13 @@ pre {
     white-space: -pre-wrap; /* Opera 4-6 */
     white-space: -o-pre-wrap; /* Opera 7 */
     word-wrap: break-word;
+    word-break: break-all;
+}
+
+a.active {
+    font-weight: 500;
+}
+
+.mat-list-base[dense] {
+    padding-top: 0 !important;
 }

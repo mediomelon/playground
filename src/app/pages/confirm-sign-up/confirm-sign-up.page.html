@@ -1,14 +1,9 @@
-<div fxLayout="column">
-    <h1 class="mat-headline">Confirm Sign Up</h1>
-    <div fxFlex fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="24px">
-        <confirm-sign-up-form
-            [isSubmitting]="isSubmitting$ | async"
-            (onSubmit)="onSubmit($event)"
-            fxFlex
-        ></confirm-sign-up-form>
-        <pre fxFlex>
-                {{ response$ | async | json }}
-            </pre
-        >
-    </div>
+<h1 class="mat-headline">Confirm Sign Up</h1>
+<div fxFlex fxLayout="row" fxLayoutAlign="start stretch" fxLayoutGap="24px">
+    <confirm-sign-up-form
+        [isSubmitting]="isSubmitting$ | async"
+        (onSubmit)="onSubmit($event)"
+        fxFlex
+    ></confirm-sign-up-form>
+    <response fxFlex [response]="response$ | async"></response>
 </div>

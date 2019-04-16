@@ -1,0 +1,14 @@
+:host {
+    display: flex;
+    flex-direction: column;
+
+    & pre {
+        position: relative;
+    }
+
+    & button.mat-icon-button {
+        position: absolute;
+        top: 0;
+        right: 0;
+    }
+}

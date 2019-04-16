@@ -2,6 +2,8 @@ import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { SignUpPayload } from '../../models/authentication';
+
 interface Store {
     submitting: boolean;
     response: any;
@@ -16,6 +18,10 @@ export class SignUpStore {
         response: null
     });
 
+    private readonly _formState = new BehaviorSubject<SignUpPayload>(null);
+
+    readonly formState$ = this._formState.asObservable();
+
     private readonly value$ = this._value.asObservable();
 
     isSubmitting$ = this.value$.pipe(map(value => value.submitting));
@@ -24,6 +30,10 @@ export class SignUpStore {
 
     private getValue() {
         return this._value.getValue();
+    }
+
+    setFormState(value: SignUpPayload) {
+        this._formState.next(value);
     }
 
     setValue(value: Store) {

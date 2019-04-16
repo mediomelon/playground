@@ -14,7 +14,7 @@ const matFormFieldDefaultOptions: MatFormFieldDefaultOptions = {
 const matSnackbarDefaultOptions: MatSnackBarConfig = {
     horizontalPosition: "right",
     verticalPosition: "bottom",
-    duration: 5000
+    duration: 2000
 };
 
 @NgModule({

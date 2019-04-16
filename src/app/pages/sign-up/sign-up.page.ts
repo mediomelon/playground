@@ -12,7 +12,10 @@ import { SignUpStore } from './sign-up.store';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpPage {
+    formState$ = this.store.formState$;
+
     isSubmitting$ = this.store.isSubmitting$;
+
     response$ = this.store.response$;
 
     constructor(
@@ -31,5 +34,9 @@ export class SignUpPage {
                     response
                 })
             );
+    }
+
+    onDestroy(payload: SignUpPayload) {
+        this.store.setFormState(payload);
     }
 }

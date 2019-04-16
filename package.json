@@ -24,9 +24,11 @@
         "@angular/platform-browser-dynamic": "^7.2.12",
         "@angular/router": "^7.2.12",
         "@mediomelon/ng-core": "0.0.2",
+        "@ngez/core": "^4.0.0",
         "aws-amplify": "^1.1.25",
         "aws-amplify-angular": "^2.1.12",
         "core-js": "^2.6.3",
+        "hammerjs": "^2.0.8",
         "rxjs": "^6.0.0",
         "zone.js": "^0.8.29"
     },

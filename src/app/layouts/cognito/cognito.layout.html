@@ -31,8 +31,20 @@
 <mat-sidenav-container fxFlex fxLayout="column" (backdropClick)="onClose()">
     <mat-sidenav opened mode="side">
         <mat-nav-list dense>
-            <a mat-list-item routerLink="sign-up"> Sign Up </a>
-            <a mat-list-item routerLink="confirm-sign-up"> Confirm Sign Up </a>
+            <a
+                mat-list-item
+                routerLinkActive="active"
+                routerLink="/cognito/sign-up"
+            >
+                Sign Up
+            </a>
+            <a
+                mat-list-item
+                routerLinkActive="active"
+                routerLink="confirm-sign-up"
+            >
+                Confirm Sign Up
+            </a>
         </mat-nav-list>
     </mat-sidenav>
     <mat-sidenav
@@ -48,7 +60,7 @@
             ></cognito-config-form>
         </div>
     </mat-sidenav>
-    <mat-sidenav-content fxFlex class="main-content" fxLayout="column">
+    <mat-sidenav-content fxFlex class="main-container" fxLayout="column">
         <router-outlet></router-outlet>
     </mat-sidenav-content>
 </mat-sidenav-container>
