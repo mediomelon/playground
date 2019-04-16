@@ -1,0 +1,54 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        <span>MM - Client</span>
+        <button (click)="onToggle()" mat-icon-button>
+            <mat-icon>menu</mat-icon>
+        </button>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <nav mat-tab-nav-bar color="accent" backgroundColor="primary">
+            <a
+                mat-tab-link
+                routerLink="/cognito"
+                routerLinkActive
+                #cognito="routerLinkActive"
+                [active]="cognito.isActive"
+            >
+                Cognito
+            </a>
+            <a
+                mat-tab-link
+                routerLink="/rest"
+                routerLinkActive
+                #rest="routerLinkActive"
+                [active]="rest.isActive"
+            >
+                REST
+            </a>
+        </nav>
+    </mat-toolbar-row>
+</mat-toolbar>
+<mat-sidenav-container fxFlex fxLayout="column" (backdropClick)="onClose()">
+    <mat-sidenav opened mode="side">
+        <mat-nav-list dense>
+            <a mat-list-item routerLink="sign-up"> Sign Up </a>
+            <a mat-list-item routerLink="confirm-sign-up"> Confirm Sign Up </a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav
+        [disableClose]="true"
+        [opened]="isOpen$ | async"
+        mode="over"
+        position="end"
+    >
+        <div class="drawer-container" *ngIf="(isOpen$ | async)">
+            <cognito-config-form
+                (onSubmit)="onSubmit($event)"
+                [config]="config$ | async"
+            ></cognito-config-form>
+        </div>
+    </mat-sidenav>
+    <mat-sidenav-content fxFlex class="main-content" fxLayout="column">
+        <router-outlet></router-outlet>
+    </mat-sidenav-content>
+</mat-sidenav-container>

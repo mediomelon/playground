@@ -1,0 +1,30 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" fxLayout="column">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input
+            type="text"
+            matInput
+            name="username"
+            formControlName="username"
+        />
+        <mat-error>
+            This field is required
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Code</mat-label>
+        <input
+            maxlength="6"
+            type="text"
+            matInput
+            name="code"
+            formControlName="code"
+        />
+        <mat-error>
+            This field is required
+        </mat-error>
+    </mat-form-field>
+    <button [disabled]="shouldDisable()" mat-flat-button color="primary">
+        SAVE
+    </button>
+</form>

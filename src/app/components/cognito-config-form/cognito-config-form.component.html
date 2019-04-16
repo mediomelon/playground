@@ -1,0 +1,68 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" fxLayout="column">
+    <mat-form-field>
+        <mat-label>Identity Pool Id</mat-label>
+        <input
+            type="text"
+            matInput
+            name="identity-pool-id"
+            formControlName="identityPoolId"
+        />
+        <mat-error>
+            <span *ngIf="form.hasError('required', 'identityPoolId')">
+                This field is required
+            </span>
+            <span *ngIf="form.hasError('pattern', 'identityPoolId')">
+                Incorrect pattern
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Region</mat-label>
+        <input type="text" matInput name="region" formControlName="region" />
+        <mat-error>
+            <span *ngIf="form.hasError('required', 'region')">
+                This field is required
+            </span>
+            <span *ngIf="form.hasError('pattern', 'region')">
+                Incorrect pattern
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>User Pool Id</mat-label>
+        <input
+            type="text"
+            matInput
+            name="user-pool-id"
+            formControlName="userPoolId"
+        />
+        <mat-error>
+            <span *ngIf="form.hasError('required', 'userPoolId')">
+                This field is required
+            </span>
+            <span *ngIf="form.hasError('pattern', 'userPoolId')">
+                Incorrect pattern
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>User Pool Web Client Id</mat-label>
+        <input
+            type="text"
+            matInput
+            name="user-pool-web-client-id"
+            formControlName="userPoolWebClientId"
+        />
+        <mat-error>
+            <span *ngIf="form.hasError('required', 'userPoolWebClientId')">
+                This field is required
+            </span>
+            <span *ngIf="form.hasError('pattern', 'userPoolWebClientId')">
+                Incorrect pattern
+            </span>
+        </mat-error>
+    </mat-form-field>
+    <button [disabled]="shouldDisable()" mat-flat-button color="primary">
+        SAVE
+    </button>
+</form>

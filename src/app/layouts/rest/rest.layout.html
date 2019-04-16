@@ -1,0 +1,28 @@
+<mat-toolbar color="primary">
+    <mat-toolbar-row fxLayout="row" fxLayoutAlign="space-between center">
+        <span>MM - Client</span>
+    </mat-toolbar-row>
+    <mat-toolbar-row>
+        <nav mat-tab-nav-bar color="accent" backgroundColor="primary">
+            <a
+                mat-tab-link
+                routerLink="/cognito"
+                routerLinkActive
+                #cognito="routerLinkActive"
+                [active]="cognito.isActive"
+            >
+                Cognito
+            </a>
+            <a
+                mat-tab-link
+                routerLink="/rest"
+                routerLinkActive
+                #rest="routerLinkActive"
+                [active]="rest.isActive"
+            >
+                REST
+            </a>
+        </nav>
+    </mat-toolbar-row>
+</mat-toolbar>
+REST CLIENT LAYOUT

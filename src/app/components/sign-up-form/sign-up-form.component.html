@@ -1,0 +1,86 @@
+<form (ngSubmit)="onSubmit()" [formGroup]="form" fxLayout="column">
+    <mat-form-field>
+        <mat-label>Username</mat-label>
+        <input
+            type="text"
+            matInput
+            name="username"
+            formControlName="username"
+        />
+        <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <mat-form-field>
+        <mat-label>Password</mat-label>
+        <input
+            type="text"
+            matInput
+            name="password"
+            formControlName="password"
+        />
+        <mat-error>This field is required</mat-error>
+    </mat-form-field>
+    <div style="margin-bottom: 24px;" fxLayout="column" fxLayoutGap="24px">
+        <mat-divider></mat-divider>
+        <div
+            fxLayout="row"
+            fxLayoutAlign="space-between center"
+            fxLayoutGap="24px"
+        >
+            <h2 class="mat-h2">Custom Attributes</h2>
+            <button
+                (click)="onAddAttribute()"
+                type="button"
+                mat-flat-button
+                color="accent"
+            >
+                ADD ATTRIBUTE
+            </button>
+        </div>
+    </div>
+    <ng-container
+        formArrayName="attributes"
+        *ngFor="let attribute of attributes.controls; let i = index"
+    >
+        <div [formGroupName]="i" fxLayout="row" fxLayoutGap="24px">
+            <mat-form-field fxFlex>
+                <mat-label>Attribute name</mat-label>
+                <input
+                    type="text"
+                    matInput
+                    placeholder="custom:business_name"
+                    name="attribute-name"
+                    formControlName="name"
+                />
+                <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            <mat-form-field fxFlex>
+                <mat-label>Attribute value</mat-label>
+                <input
+                    type="text"
+                    matInput
+                    name="attribute-value"
+                    placeholder="Medio Melón"
+                    formControlName="value"
+                />
+                <mat-error>This field is required</mat-error>
+            </mat-form-field>
+            <button
+                (click)="onRemoveAttribute(i)"
+                type="button"
+                mat-icon-button
+            >
+                <mat-icon>delete</mat-icon>
+            </button>
+        </div>
+    </ng-container>
+    <div>
+        <button
+            [disabled]="shouldDisable()"
+            type="submit"
+            mat-flat-button
+            color="primary"
+        >
+            SAVE
+        </button>
+    </div>
+</form>

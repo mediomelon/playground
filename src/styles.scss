@@ -3,5 +3,38 @@
 
 html,
 body {
-  margin: 0;
+    margin: 0;
+}
+
+.mat-toolbar .mat-toolbar-row:not(:first-child) {
+    height: auto;
+    padding: 0;
+}
+
+.app-container > *:not(router-outlet) {
+    display: flex;
+    flex-direction: column;
+    flex: 1 0 auto;
+}
+
+.main-content,
+.drawer-container {
+    padding: 24px;
+}
+
+.mat-h2 {
+    margin-bottom: 0;
+}
+
+pre {
+    background-color: #1d1f21;
+    color: white;
+    margin: 0;
+    padding: 12px;
+    border-radius: 4px;
+    white-space: pre-wrap; /* css-3 */
+    white-space: -moz-pre-wrap; /* Mozilla, since 1999 */
+    white-space: -pre-wrap; /* Opera 4-6 */
+    white-space: -o-pre-wrap; /* Opera 7 */
+    word-wrap: break-word;
 }
