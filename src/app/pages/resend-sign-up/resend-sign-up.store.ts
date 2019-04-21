@@ -4,15 +4,15 @@ import { map } from 'rxjs/operators';
 import { Test } from 'src/app/models/test';
 import { StorageService } from 'src/app/services/storage.service';
 
-import { SignUpPayload } from '../../models/authentication';
+const KEY = "RESEND_SIGN_UP";
 
-const KEY = "SIGN_UP";
+type ResendSignUpTest = Test<string>;
 
 @Injectable({
     providedIn: "root"
 })
-export class SignUpStore {
-    private readonly _test = new BehaviorSubject<Test<SignUpPayload>>(null);
+export class ResendSignUpStore {
+    private readonly _test = new BehaviorSubject<ResendSignUpTest>(null);
 
     private readonly _isSubmitting = new BehaviorSubject<boolean>(false);
 
@@ -34,7 +34,7 @@ export class SignUpStore {
         });
     }
 
-    setTest(test: Test<SignUpPayload>) {
+    setTest(test: ResendSignUpTest) {
         this.storage.set(KEY, test).subscribe(() => this.emitTest(test));
     }
 
@@ -42,7 +42,7 @@ export class SignUpStore {
         this._isSubmitting.next(payload);
     }
 
-    private emitTest(test: Test<SignUpPayload>) {
+    private emitTest(test: ResendSignUpTest) {
         this._test.next(test);
     }
 }

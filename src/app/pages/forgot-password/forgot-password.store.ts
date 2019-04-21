@@ -1,31 +1,48 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { map } from 'rxjs/operators';
+import { Test } from 'src/app/models/test';
+import { StorageService } from 'src/app/services/storage.service';
+
+const KEY = "FORGOT_PASSWORD";
+
+type ForgotPasswordTest = Test<string>;
 
 @Injectable({
     providedIn: "root"
 })
 export class ForgotPasswordStore {
+    private readonly _test = new BehaviorSubject<ForgotPasswordTest>(null);
+
     private readonly _isSubmitting = new BehaviorSubject<boolean>(false);
 
-    private readonly _response = new BehaviorSubject<boolean>(null);
+    private readonly test$ = this._test.asObservable();
 
-    private readonly _formState = new BehaviorSubject<string>(null);
+    readonly request$ = this.test$.pipe(
+        map(test => (test ? test.request : null))
+    );
 
-    readonly formState$ = this._formState.asObservable();
+    readonly response$ = this.test$.pipe(
+        map(test => (test ? test.response : null))
+    );
 
     readonly isSubmitting$ = this._isSubmitting.asObservable();
 
-    readonly response$ = this._response.asObservable();
-
-    setFormState(value: string) {
-        this._formState.next(value);
+    constructor(private storage: StorageService) {
+        this.storage.get(KEY).subscribe(value => {
+            if (value) this.emitTest(value);
+        });
     }
 
-    setResponse(value: any) {
-        this._response.next(value);
+    setTest(test: ForgotPasswordTest) {
+        this.storage.set(KEY, test).subscribe(() => this.emitTest(test));
     }
 
-    setSubmitting(value: boolean) {
-        this._isSubmitting.next(value);
+    setSubmitting(payload: boolean) {
+        this._isSubmitting.next(payload);
+    }
+
+    private emitTest(test: ForgotPasswordTest) {
+        this._test.next(test);
     }
 }

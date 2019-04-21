@@ -2,13 +2,13 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { FlexLayoutModule } from '@angular/flex-layout';
 
-import { ForgotPasswordFormModule } from '../../components/forgot-password-form/forgot-password-form.module';
 import { ResponseModule } from '../../components/response/response.module';
+import { UsernameFormModule } from '../../components/username-form/username-form.module';
 import { ForgotPasswordPage } from './forgot-password.page';
 
 const COMMON_IMPORTS = [
     FlexLayoutModule,
-    ForgotPasswordFormModule,
+    UsernameFormModule,
     CommonModule,
     ResponseModule
 ];

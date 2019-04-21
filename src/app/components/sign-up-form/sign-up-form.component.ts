@@ -1,9 +1,8 @@
-import { ChangeDetectionStrategy, Component, EventEmitter, Input, OnDestroy, OnInit, Output } from '@angular/core';
+import { ChangeDetectionStrategy, Component, Input, OnChanges, SimpleChanges } from '@angular/core';
 import { FormArray, FormBuilder, Validators } from '@angular/forms';
 import { FormBase } from '@mediomelon/ng-core';
 
 import { SignUpPayload } from '../../models/authentication';
-import { SignUpStore } from '../../pages/sign-up/sign-up.store';
 
 @Component({
     selector: "sign-up-form",
@@ -11,35 +10,40 @@ import { SignUpStore } from '../../pages/sign-up/sign-up.store';
     changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class SignUpFormComponent extends FormBase<SignUpPayload>
-    implements OnInit, OnDestroy {
+    implements OnChanges {
     @Input() state: SignUpPayload;
 
-    constructor(private formBuilder: FormBuilder, private store: SignUpStore) {
+    constructor(private formBuilder: FormBuilder) {
         super();
+
+        this.form = formBuilder.group({
+            username: ["", Validators.required],
+            password: ["", Validators.required],
+            attributes: formBuilder.array([])
+        });
     }
 
-    ngOnInit() {
-        let username = "";
-        let password = "";
-        let attributes = [];
+    ngOnChanges(changes: SimpleChanges) {
+        const { state } = changes;
 
-        if (this.state) {
-            username = this.state.username;
-            password = this.state.password;
-            attributes = this.state.attributes.map(attribute =>
-                this.createAttributeFormGroup(attribute.name, attribute.value)
-            );
-        }
+        if (
+            !state ||
+            !state.currentValue ||
+            state.currentValue == state.previousValue
+        )
+            return;
+
+        const username = this.state.username;
+        const password = this.state.password;
+        const attributes = this.state.attributes.map(attribute =>
+            this.createAttributeFormGroup(attribute.name, attribute.value)
+        );
 
         this.form = this.formBuilder.group({
             username: [username, [Validators.required]],
             password: [password, Validators.required],
             attributes: this.formBuilder.array(attributes)
         });
-    }
-
-    ngOnDestroy() {
-        this.store.setFormState(this.form.value);
     }
 
     onAddAttribute() {

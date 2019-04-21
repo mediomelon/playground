@@ -11,6 +11,8 @@ import { ForgotPasswordSubmitModule } from './pages/forgot-password-submit/forgo
 import { ForgotPasswordSubmitPage } from './pages/forgot-password-submit/forgot-password-submit.page';
 import { ForgotPasswordModule } from './pages/forgot-password/forgot-password.module';
 import { ForgotPasswordPage } from './pages/forgot-password/forgot-password.page';
+import { ResendSignUpModule } from './pages/resend-sign-up/resend-sign-up.module';
+import { ResendSignUpPage } from './pages/resend-sign-up/resend-sign-up.page';
 import { SignUpModule } from './pages/sign-up/sign-up.module';
 import { SignUpPage } from './pages/sign-up/sign-up.page';
 
@@ -32,6 +34,10 @@ const routes: Routes = [
             {
                 path: "sign-up",
                 component: SignUpPage
+            },
+            {
+                path: "resend-sign-up",
+                component: ResendSignUpPage
             },
             {
                 path: "confirm-sign-up",
@@ -59,6 +65,7 @@ const routes: Routes = [
         CognitoLayoutModule,
         RestLayoutModule,
         SignUpModule,
+        ResendSignUpModule,
         ConfirmSignUpModule,
         ForgotPasswordModule,
         ForgotPasswordSubmitModule

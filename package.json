@@ -29,7 +29,9 @@
         "aws-amplify-angular": "^2.1.12",
         "core-js": "^2.6.3",
         "hammerjs": "^2.0.8",
+        "localforage": "^1.7.3",
         "rxjs": "^6.0.0",
+        "uuid": "^3.3.2",
         "zone.js": "^0.8.29"
     },
     "devDependencies": {

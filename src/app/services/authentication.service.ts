@@ -38,6 +38,10 @@ export class AuthenticationService {
         );
     }
 
+    resendSignUp(username: string) {
+        return from(this.auth.resendSignUp(username));
+    }
+
     confirmSignUp({ username, code }: ConfirmSignUpPayload) {
         return from(this.auth.confirmSignUp(username, code));
     }

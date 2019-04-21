@@ -1,0 +1,125 @@
+@import '~@angular/material/theming';
+// Plus imports for other components in your app.
+
+// Include the common styles for Angular Material. We include this here so that you only
+// have to load a single css file for Angular Material in your app.
+// Be sure that you only ever include this mixin once!
+@include mat-core();
+
+// Define the palettes for your theme using the Material Design palettes available in palette.scss
+// (imported above). For each palette, you can optionally specify a default, lighter, and darker
+// hue. Available color palettes: https://www.google.com/design/spec/style/color.html
+
+$primary: (
+    50 : #fdf1e6,
+    100 : #f9dbc1,
+    200 : #f6c398,
+    300 : #f2ab6f,
+    400 : #ef9950,
+    500 : #ec8731,
+    600 : #ea7f2c,
+    700 : #e77425,
+    800 : #e46a1f,
+    900 : #df5713,
+    A100 : #ffffff,
+    A200 : #ffe5da,
+    A400 : #ffc1a7,
+    A700 : #ffaf8e,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #000000,
+        400 : #000000,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+$secondary: (
+    50 : #e2e4e6,
+    100 : #b6bcbf,
+    200 : #868f95,
+    300 : #55626b,
+    400 : #30414b,
+    500 : #0c1f2b,
+    600 : #0a1b26,
+    700 : #081720,
+    800 : #06121a,
+    900 : #030a10,
+    A100 : #529cff,
+    A200 : #1f7fff,
+    A400 : #0065eb,
+    A700 : #005ad2,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #ffffff,
+        A400 : #ffffff,
+        A700 : #ffffff,
+    )
+);
+
+$warning: (
+    50 : #f9e1e4,
+    100 : #f1b3bb,
+    200 : #e8818d,
+    300 : #de4e5f,
+    400 : #d7283d,
+    500 : #d0021b,
+    600 : #cb0218,
+    700 : #c40114,
+    800 : #be0110,
+    900 : #b30108,
+    A100 : #ffdcdd,
+    A200 : #ffa9aa,
+    A400 : #ff7678,
+    A700 : #ff5d5f,
+    contrast: (
+        50 : #000000,
+        100 : #000000,
+        200 : #000000,
+        300 : #ffffff,
+        400 : #ffffff,
+        500 : #ffffff,
+        600 : #ffffff,
+        700 : #ffffff,
+        800 : #ffffff,
+        900 : #ffffff,
+        A100 : #000000,
+        A200 : #000000,
+        A400 : #000000,
+        A700 : #000000,
+    )
+);
+
+
+$app-primary: mat-palette($primary);
+$app-accent:  mat-palette($secondary);
+
+// The warn palette is optional (defaults to red).
+$app-warn:    mat-palette($warning);
+
+//Get colors
+$app-primary-color: mat-color($app-primary);
+$app-accent-color: mat-color($app-accent);
+$app-warn-color: mat-color($app-warn);
+
+// Create the theme object (a Sass map containing all of the palettes).
+$app-theme: mat-light-theme($app-primary, $app-accent, $app-warn);

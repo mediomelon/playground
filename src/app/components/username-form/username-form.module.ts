@@ -4,7 +4,7 @@ import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatInputModule } from '@angular/material/input';
 
-import { ForgotPasswordFormComponent } from './forgot-password-form.component';
+import { UsernameFormComponent } from './username-form.component';
 
 const COMMON_IMPORTS = [
     FlexLayoutModule,
@@ -13,11 +13,11 @@ const COMMON_IMPORTS = [
     MatButtonModule
 ];
 
-const COMMON_DECLARATIONS = [ForgotPasswordFormComponent];
+const COMMON_DECLARATIONS = [UsernameFormComponent];
 
 @NgModule({
     imports: [COMMON_IMPORTS],
     declarations: [COMMON_DECLARATIONS],
     exports: [COMMON_DECLARATIONS]
 })
-export class ForgotPasswordFormModule {}
+export class UsernameFormModule {}

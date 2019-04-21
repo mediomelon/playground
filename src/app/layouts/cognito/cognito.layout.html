@@ -6,7 +6,7 @@
         </button>
     </mat-toolbar-row>
     <mat-toolbar-row>
-        <nav mat-tab-nav-bar color="accent" backgroundColor="primary">
+        <nav mat-tab-nav-bar backgroundColor="primary" color="accent">
             <a
                 mat-tab-link
                 routerLink="/cognito"
@@ -37,6 +37,13 @@
                 routerLink="/cognito/sign-up"
             >
                 Sign Up
+            </a>
+            <a
+                mat-list-item
+                routerLinkActive="active"
+                routerLink="/cognito/resend-sign-up"
+            >
+                Resend Sign Up
             </a>
             <a
                 mat-list-item
